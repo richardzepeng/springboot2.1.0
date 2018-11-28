@@ -12,14 +12,14 @@ import org.springframework.web.bind.annotation.RestController;
  * @date 2018-11-20 16:37
  */
 @RestController
-public class HelloWorld {
+public class HelloWorldController {
   /**
    * 依赖注入使用构造器注入，使用final修饰
    */
   private final HelloWorldService helloWorldService;
 
   @Autowired
-  public HelloWorld(HelloWorldService helloWorldService) {
+  public HelloWorldController(HelloWorldService helloWorldService) {
     this.helloWorldService = helloWorldService;
   }
 
@@ -27,6 +27,11 @@ public class HelloWorld {
   public String sayHello(String name) {
     name = helloWorldService.checkName(name);
     return new String(new StringBuilder(name).append(",hello ! Welcome !"));
+  }
+
+  @RequestMapping("/test/inject")
+  public void testInject(){
+    helloWorldService.testInject();
   }
 
 }

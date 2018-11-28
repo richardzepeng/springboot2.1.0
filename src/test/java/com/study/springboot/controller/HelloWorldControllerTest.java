@@ -16,7 +16,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultHandlers;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 @AutoConfigureMockMvc
-public class HelloWorldTest {
+public class HelloWorldControllerTest {
 
   @Autowired
   private MockMvc mvc;
@@ -31,5 +31,12 @@ public class HelloWorldTest {
     String contentAsString = response.getContentAsString();
     System.err.println(contentAsString);
     mvc.perform(getRequestbuilder).andDo(MockMvcResultHandlers.log());
+  }
+
+  @Test
+  public void testInject() throws Exception {
+    MockHttpServletRequestBuilder getRequestbuilder = MockMvcRequestBuilders
+        .get("/test/inject");
+   mvc.perform(getRequestbuilder).andReturn();
   }
 }

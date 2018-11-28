@@ -12,4 +12,10 @@ public interface HelloWorldService {
    * @return check result
    */
   String checkName(String name);
+
+  /**
+   * test configrution inject
+   */
+  void testInject();
+
 }

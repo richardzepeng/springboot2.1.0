@@ -71,6 +71,13 @@
       <artifactId>spring-boot-starter-actuator</artifactId>
     </dependency>
 
+    <!--支持ConfigurationProperties和EnableConfigurationProperties注解-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-configuration-processor</artifactId>
+      <optional>true</optional>
+    </dependency>
+
     <!--springboot平滑升级报告包，升级完后注释-->
     <!--<dependency>-->
       <!--<groupId>org.springframework.boot</groupId>-->
