@@ -1,5 +1,7 @@
 package com.study.springboot.service;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+
 /**
  * @author Ricahrd.guo
  * @date 2018-11-22 13:20
@@ -16,6 +18,6 @@ public interface HelloWorldService {
   /**
    * test configrution inject
    */
-  void testInject();
+  void testInject() throws JsonProcessingException;
 
 }

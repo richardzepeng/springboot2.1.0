@@ -1,11 +1,16 @@
 package com.study.springboot.service.impl;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.study.springboot.properties.UserProperties;
 import com.study.springboot.service.HelloWorldService;
 import java.util.List;
 import java.util.Map;
+import java.util.Properties;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;
 import org.springframework.stereotype.Service;
 
@@ -26,6 +31,9 @@ public class HelloWorldServiceImpl implements HelloWorldService {
   private final List books;
   private final Map bookIndex;
 
+  @Value("${custom.value}")
+  private String value;
+
   @SuppressWarnings("SpringJavaInjectionPointsAutowiringInspection")
   public HelloWorldServiceImpl(UserProperties userProperties) {
     this.username = userProperties.getUsername();
@@ -40,10 +48,16 @@ public class HelloWorldServiceImpl implements HelloWorldService {
   }
 
   @Override
-  public void testInject() {
+  public void testInject() throws JsonProcessingException {
+    ObjectMapper mapper = new ObjectMapper();
+    Map<String, String> getenv = System.getenv();
+    Properties properties = System.getProperties();
+    logger.info("evnpros:{}",mapper.writerWithDefaultPrettyPrinter().writeValueAsString(getenv));
+    logger.info("syspros:{}",mapper.writerWithDefaultPrettyPrinter().writeValueAsString(properties));
     logger.info("username:{}", username);
     logger.info("password:{}", password);
     logger.info("books:{}", books);
     logger.info("bookIndex:{}", bookIndex);
+    logger.info("value:{}",value);
   }
 }

@@ -31,19 +31,19 @@
       <groupId>org.springframework.boot</groupId>
       <artifactId>spring-boot-starter</artifactId>
       <exclusions>
-        <!--排除内置的logback日志-->
-        <exclusion>
-          <groupId>org.springframework.boot</groupId>
-          <artifactId>spring-boot-starter-logging</artifactId>
-        </exclusion>
+        <!--排除内置的logback日志,使用log4j2-->
+        <!--<exclusion>-->
+          <!--<groupId>org.springframework.boot</groupId>-->
+          <!--<artifactId>spring-boot-starter-logging</artifactId>-->
+        <!--</exclusion>-->
       </exclusions>
     </dependency>
 
     <!--springboot集成log4j2日志-->
-    <dependency>
-      <groupId>org.springframework.boot</groupId>
-      <artifactId>spring-boot-starter-log4j2</artifactId>
-    </dependency>
+    <!--<dependency>-->
+      <!--<groupId>org.springframework.boot</groupId>-->
+      <!--<artifactId>spring-boot-starter-log4j2</artifactId>-->
+    <!--</dependency>-->
 
     <!--springboot测试-->
     <dependency>
