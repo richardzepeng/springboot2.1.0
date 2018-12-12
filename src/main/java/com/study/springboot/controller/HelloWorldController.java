@@ -2,6 +2,7 @@ package com.study.springboot.controller;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.study.springboot.service.HelloWorldService;
+import javax.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

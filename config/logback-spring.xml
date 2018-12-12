@@ -11,8 +11,9 @@
     value="${CONSOLE_LOG_PATTERN:-%clr(%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}}){faint} %clr(${LOG_LEVEL_PATTERN:-%5p}) %clr(${PID:- }){magenta} %clr(---){faint} %clr([%15.15t]){faint} %clr(%-40.40logger{39}){cyan} %clr(:){faint} %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
   <property name="FILE_LOG_PATTERN"
     value="${FILE_LOG_PATTERN:-%d{${LOG_DATEFORMAT_PATTERN:-yyyy-MM-dd HH:mm:ss.SSS}} ${LOG_LEVEL_PATTERN:-%5p} ${PID:- } --- [%t] %-40.40logger{39} : %m%n${LOG_EXCEPTION_CONVERSION_WORD:-%wEx}}"/>
-  <property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-./logs}/main.log}"/>
-  <property name="LOG_ERROR_FILE" value="${LOG_ERROR_FILE:-${LOG_PATH:-./logs}/error.log}"/>
+  <property name="LOG_PATH" value="${LOG_PATH:-logs}"/>
+  <property name="LOG_FILE" value="${LOG_FILE:-${LOG_PATH:-logs}/main.log}"/>
+  <property name="LOG_ERROR_FILE" value="${LOG_ERROR_FILE:-${LOG_PATH:-logs}/error.log}"/>
 
   <!--${环境变量或者系统变量引用} 或者引用当前的property或者springproperty属性 -->
   <springProperty scope="context" name="fluentHost" source="myapp.fluentd.host" defaultValue="localhost"/>
@@ -61,7 +62,6 @@
   <!--springProfile 和 springProperty 仅支持logback-->
   <!--使用springProfile来控制不同环境的日志配置,可以使用逻辑表达式，！& | -->
   <springProfile name="dev">
-    <!--base-->
     <root level="DEBUG">
       <appender-ref ref="CONSOLE"/>
       <appender-ref ref="FILE"/>
@@ -69,7 +69,6 @@
     </root>
   </springProfile>
   <springProfile name="prod">
-    <!--base-->
     <root level="INFO">
       <appender-ref ref="CONSOLE"/>
       <appender-ref ref="FILE"/>
