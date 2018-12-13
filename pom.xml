@@ -85,13 +85,28 @@
       <!--<scope>runtime</scope>-->
     <!--</dependency>-->
 
-    <!--单独使用 low-level java Rest client-->
+    <!--使用 low-level java Rest client-->
     <dependency>
       <groupId>org.elasticsearch.client</groupId>
       <artifactId>elasticsearch-rest-client</artifactId>
       <version>${elasticsearch.version}</version>
       <exclusions>
         <exclusion>
+          <!--排除jar包自带的commons-logging,使用自己配置日志工具-->
+          <artifactId>commons-logging</artifactId>
+          <groupId>commons-logging</groupId>
+        </exclusion>
+      </exclusions>
+    </dependency>
+
+    <!--使用es rest客户端 嗅探-->
+    <dependency>
+      <groupId>org.elasticsearch.client</groupId>
+      <artifactId>elasticsearch-rest-client-sniffer</artifactId>
+      <version>${elasticsearch.version}</version>
+      <exclusions>
+        <exclusion>
+          <!--排除jar包自带的commons-logging,使用自己配置日志工具-->
           <artifactId>commons-logging</artifactId>
           <groupId>commons-logging</groupId>
         </exclusion>
