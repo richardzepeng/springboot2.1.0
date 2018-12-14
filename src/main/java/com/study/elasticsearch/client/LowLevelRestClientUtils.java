@@ -29,10 +29,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * 默认使用http 低等级的java rest 客户端，兼容所有的es版本， sniffer 嗅探兼容2.x及以上版本，默认每5分钟，从集群中获取当前节点的列表，并更新它们
+ * 默认使用http，用户自己编写request请求，自己解析response相应
+ * <p>
+ * 低等级的java rest 客户端，兼容所有的es版本，
+ * <p>
+ * sniffer 嗅探兼容2.x及以上版本，默认每5分钟，从集群中获取当前节点的列表，并更新它们
  *
  * @author Ricahrd.guo
  * @date 2018-12-11 16:27
+ * @since java1.7
  */
 public class LowLevelRestClientUtils {
 
@@ -54,7 +59,7 @@ public class LowLevelRestClientUtils {
   /**
    * 初始化客户端
    */
-  public static void init() {
+  private static void init() {
     //创造一个客户端实例
     RestClientBuilder restClientBuilder = RestClient
         .builder(new HttpHost("bd225", 9200, HttpHost.DEFAULT_SCHEME_NAME),
