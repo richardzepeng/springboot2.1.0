@@ -85,6 +85,12 @@
       <!--<scope>runtime</scope>-->
     <!--</dependency>-->
 
+    <!--springboot json-->
+    <dependency>
+      <groupId>org.springframework.boot</groupId>
+      <artifactId>spring-boot-starter-json</artifactId>
+    </dependency>
+
     <!--使用 low-level java Rest client-->
     <dependency>
       <groupId>org.elasticsearch.client</groupId>
@@ -92,7 +98,6 @@
       <version>${elasticsearch.version}</version>
       <exclusions>
         <exclusion>
-          <!--排除jar包自带的commons-logging,使用自己配置日志工具-->
           <artifactId>commons-logging</artifactId>
           <groupId>commons-logging</groupId>
         </exclusion>
@@ -111,6 +116,13 @@
           <groupId>commons-logging</groupId>
         </exclusion>
       </exclusions>
+    </dependency>
+
+    <!--使用 high-level java Rest client-->
+    <dependency>
+      <groupId>org.elasticsearch.client</groupId>
+      <artifactId>elasticsearch-rest-high-level-client</artifactId>
+      <version>${elasticsearch.version}</version>
     </dependency>
 
   </dependencies>

@@ -41,7 +41,6 @@ import org.slf4j.LoggerFactory;
  */
 public class LowLevelRestClientUtils {
 
-  private final Logger logger = LoggerFactory.getLogger(LowLevelRestClientUtils.class);
   private static RestClient client;
   private static Sniffer sniffer;
   private static final RequestOptions COMMON_OPTIONS;
@@ -62,8 +61,8 @@ public class LowLevelRestClientUtils {
   private static void init() {
     //创造一个客户端实例
     RestClientBuilder restClientBuilder = RestClient
-        .builder(new HttpHost("bd225", 9200, HttpHost.DEFAULT_SCHEME_NAME),
-            new HttpHost("bd226", 9200, HttpHost.DEFAULT_SCHEME_NAME));
+        .builder(new HttpHost("node5", 9200, HttpHost.DEFAULT_SCHEME_NAME),
+            new HttpHost("node6", 9200, HttpHost.DEFAULT_SCHEME_NAME));
     //配置所有请求的头部信息
     restClientBuilder.setDefaultHeaders(new Header[]{new BasicHeader("header", "value")});
     //配置同一请求失败重试时最大请求间隔(默认30秒）
@@ -128,7 +127,7 @@ public class LowLevelRestClientUtils {
   public static Response synchronousRequest(String method, String endpoint) throws IOException {
     Request request = new Request(method, endpoint);
     //设置url参数
-    request.addParameter("pretty", "true");
+//    request.addParameter("pretty", "true");
     //ignore参数可以对返回码进行不报错处理
     request.addParameter("ignore", "400");
     return client.performRequest(request);
