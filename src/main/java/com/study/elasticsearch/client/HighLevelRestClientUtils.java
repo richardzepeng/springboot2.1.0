@@ -46,8 +46,8 @@ public class HighLevelRestClientUtils {
   private static void init() {
     //高级客户端基于低级客户端开发，先配置好低级客户端
     RestClientBuilder restClientBuilder = RestClient
-        .builder(new HttpHost("node5", 9200, HttpHost.DEFAULT_SCHEME_NAME),
-            new HttpHost("node6", 9200, HttpHost.DEFAULT_SCHEME_NAME))
+        .builder(new HttpHost("node5", 9200, HttpHost.DEFAULT_SCHEME_NAME))
+//            new HttpHost("node6", 9200, HttpHost.DEFAULT_SCHEME_NAME))
         .setNodeSelector(NodeSelector.SKIP_DEDICATED_MASTERS);
 
     client = new RestHighLevelClient(restClientBuilder);

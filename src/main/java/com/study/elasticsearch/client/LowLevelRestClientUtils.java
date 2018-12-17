@@ -61,8 +61,8 @@ public class LowLevelRestClientUtils {
   private static void init() {
     //创造一个客户端实例
     RestClientBuilder restClientBuilder = RestClient
-        .builder(new HttpHost("node5", 9200, HttpHost.DEFAULT_SCHEME_NAME),
-            new HttpHost("node6", 9200, HttpHost.DEFAULT_SCHEME_NAME));
+        .builder(new HttpHost("node5", 9200, HttpHost.DEFAULT_SCHEME_NAME));
+//            new HttpHost("node6", 9200, HttpHost.DEFAULT_SCHEME_NAME));
     //配置所有请求的头部信息
     restClientBuilder.setDefaultHeaders(new Header[]{new BasicHeader("header", "value")});
     //配置同一请求失败重试时最大请求间隔(默认30秒）
